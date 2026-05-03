@@ -1,6 +1,6 @@
 # Webové stránky kampaně Stop ISS spyware expo Prague
 
-# Bun and Astro commands
+## Bun and Astro commands
 
 All commands are run from the root of the project, from a terminal:
 
