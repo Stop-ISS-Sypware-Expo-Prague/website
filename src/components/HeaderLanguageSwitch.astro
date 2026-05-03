@@ -1,0 +1,19 @@
+---
+const {class: className, ...props } = Astro.props;
+
+const path = Astro.url.pathname;
+const pathname = (path.at(-1) == "/") ? path : path + "/";
+const en_slice = pathname.slice(0, 4);
+const is_eng = en_slice === "/en/";
+const switched_path =  is_eng ? pathname.slice(3) : "/en" + pathname
+---
+
+<a href={switched_path} class:list={[className]} {...props}>
+	{is_eng ? "CZ" : "EN"}
+</a>
+<style>
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+</style>
