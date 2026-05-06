@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE_EN, SITE_TITLE_CZ } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import HeaderLanguageSwitch from './HeaderLanguageSwitch.astro';
 import { Image } from 'astro:assets';
@@ -12,42 +12,52 @@ const is_eng = en_slice === "/en/";
 
 <header>
 	<nav>
-		<a href="/"><Image src="/logo-small-transparent.png" alt={SITE_TITLE} width="100" height="50" /></a>
+		<a href={is_eng ? "/en" : "/"}><Image src="/logo-small-transparent.png" alt={is_eng ? SITE_TITLE_EN : SITE_TITLE_CZ} width="100" height="50" /></a>
 		<div class="internal-links">
-			<HeaderLink href="/">{is_eng ? "Home" : "Domov"}</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">{is_eng ? "About" : "O nás"}</HeaderLink>
+			<HeaderLink href={is_eng ? "/en" : "/"}>{is_eng ? "Home" : "Domů"}</HeaderLink>
+			<HeaderLink href={is_eng ? "/en/companies" : "/spolecnosti"}>{is_eng ? "Companies" : "Společnosti"}</HeaderLink>
+			<HeaderLink href={is_eng ? "/en/petition" : "/petice"}>{is_eng ? "Petition" : "Petice"}</HeaderLink>
+			<HeaderLink href={is_eng ? "/en/support" : "/podporte"}>{is_eng ? "Support the Campaign" : "Podpořte kampaň"}</HeaderLink>
 		</div>
 
 		<HeaderLanguageSwitch></HeaderLanguageSwitch>
 		
 		<div class="social-links">
 			<a href="https://m.webtoo.ls/@astro" target="_blank">
-				<span class="sr-only">Follow Astro on Mastodon</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
-					></path></svg
-				>
+				<span class="sr-only">Follow us on Instagram</span>
+				<svg
+					fill="currentColor"
+					width="34"
+					height="34"
+					viewBox="0 0 32 32">
+					<g>
+						<path
+						d="m 22.3,8.4 c -0.8,0 -1.4,0.6 -1.4,1.4 0,0.8 0.6,1.4 1.4,1.4 0.8,0 1.4,-0.6 1.4,-1.4 0,-0.8 -0.6,-1.4 -1.4,-1.4 z"
+						/>
+						<path
+						d="m 16,10.2 c -3.3,0 -5.9,2.7 -5.9,5.9 0,3.2 2.7,5.9 5.9,5.9 3.2,0 5.9,-2.7 5.9,-5.9 0,-3.2 -2.6,-5.9 -5.9,-5.9 z m 0,9.7 c -2.1,0 -3.8,-1.7 -3.8,-3.8 0,-2.1 1.7,-3.8 3.8,-3.8 2.1,0 3.8,1.7 3.8,3.8 0,2.1 -1.7,3.8 -3.8,3.8 z"
+						/>
+						<path
+						d="M 20.8,4 H 11.3 C 7.2,4 4,7.2 4,11.2 v 9.5 c 0,4 3.2,7.2 7.2,7.2 h 9.5 c 4,0 7.2,-3.2 7.2,-7.2 V 11.2 C 28,7.2 24.8,4 20.8,4 Z m 4.9,16.8 c 0,2.7 -2.2,5 -5,5 h -9.5 c -2.7,0 -5,-2.2 -5,-5 v -9.5 c 0,-2.7 2.2,-5 5,-5 h 9.5 c 2.7,0 5,2.2 5,5 z"
+						/>
+					</g>
+				</svg>
+
 			</a>
 			<a href="https://twitter.com/astrodotbuild" target="_blank">
-				<span class="sr-only">Follow Astro on Twitter</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
+				<span class="sr-only">Follow us on Facebook</span>
+				<svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true">
+					<path 
 						fill="currentColor"
-						d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-					></path></svg
-				>
+						d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"/>
+				</svg>
 			</a>
+
 			<a href="https://github.com/withastro/astro" target="_blank">
-				<span class="sr-only">Go to Astro's GitHub repo</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
+				<span class="sr-only">Follow us on Twitter/X</span>
+				<svg width="32" height="32" viewBox="0 0 1024 1024" aria-hidden="true", fill="currentColor" fill-rule="evenodd">
+					<path d="M818 800 498.11 333.745l.546.437L787.084 0h-96.385L455.738 272 269.15 0H16.367l298.648 435.31-.036-.037L0 800h96.385l261.222-302.618L565.217 800zM230.96 72.727l448.827 654.546h-76.38L154.217 72.727z" transform="translate(103 112)"/>
+				</svg>
 			</a>
 		</div>
 	</nav>
