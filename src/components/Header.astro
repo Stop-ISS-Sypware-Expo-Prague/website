@@ -12,9 +12,11 @@ const is_eng = en_slice === "/en/";
 
 <header>
 	<nav>
-		<a href={is_eng ? "/en" : "/"}><Image src="/logo-small-transparent.png" alt={is_eng ? SITE_TITLE_EN : SITE_TITLE_CZ} width="100" height="50" /></a>
+		<div class="logo">
+			<a href={is_eng ? "/en" : "/"}><Image src="/logo-small-transparent.png" alt={is_eng ? SITE_TITLE_EN : SITE_TITLE_CZ} width="90" height="50" /></a>
+		</div>
 		<div class="internal-links">
-			<HeaderLink href={is_eng ? "/en" : "/"}>{is_eng ? "Home" : "Domů"}</HeaderLink>
+			<!-- <HeaderLink href={is_eng ? "/en" : "/"}>{is_eng ? "Home" : "Domů"}</HeaderLink> -->
 			<HeaderLink href={is_eng ? "/en/companies" : "/spolecnosti"}>{is_eng ? "Companies" : "Společnosti"}</HeaderLink>
 			<HeaderLink href={is_eng ? "/en/petition" : "/petice"}>{is_eng ? "Petition" : "Petice"}</HeaderLink>
 			<HeaderLink href={is_eng ? "/en/support" : "/podporte"}>{is_eng ? "Support the Campaign" : "Podpořte kampaň"}</HeaderLink>
@@ -80,6 +82,11 @@ const is_eng = en_slice === "/en/";
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
+	}
+	logo {
+		display: flex;
+		align-items: center;
+		padding-top: 100px;
 	}
 	nav {
 		display: flex;
