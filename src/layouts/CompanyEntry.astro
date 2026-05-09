@@ -8,16 +8,19 @@ import Header from "../components/Header.astro";
 
 interface Props {
     id: string;
+    en: boolean;
     data: CollectionEntry<"blog">["data"];
 }
 
-const { id, data } = Astro.props;
+const { id, en, data } = Astro.props;
 ---
 
 <div class="main-box">
     <img class="logo" src={data.logo} alt={data.title + " Logo"} />
     <div class="text-box">
-        <h4><a href={`/en/companies/${id}/`}>{data.title}</a></h4>
+        <h4>
+            <a href={`${en ? "/en" : ""}/companies/${id}/`}>{data.title}</a>
+        </h4>
         <p>{data.description}</p>
     </div>
 </div>

@@ -10,7 +10,7 @@ const posts = await getCollection("blog");
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="cs">
     <head>
         <BaseHead
             title={"Společnosti | " + SITE_TITLE_CZ}
@@ -25,7 +25,7 @@ const posts = await getCollection("blog");
                 {
                     posts.map((post) => (
                         <li>
-                            <CompanyEntry {...post} />
+                            <CompanyEntry {...post} en={false} />
                         </li>
                     ))
                 }
