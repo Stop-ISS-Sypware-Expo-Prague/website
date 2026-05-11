@@ -20,23 +20,30 @@ const { title, description, logo } = Astro.props;
                 max-width: 100%;
                 margin: 0;
             }
-            .hero-image {
+            .hero {
                 width: 100%;
             }
-            .hero-image img {
+            .hero-image {
                 display: block;
                 margin: 0 auto;
-                border-radius: 12px;
-                box-shadow: var(--box-shadow);
+                width: 720px;
+                align-items: center;
+                z-index: -1;
+                max-width: calc(100% - 2em);
+                img {
+                    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+                    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+                }
             }
             .prose {
                 width: 720px;
                 max-width: calc(100% - 2em);
                 margin: auto;
                 padding: 1em;
-                color: rgb(var(--gray-dark));
+                color: rgb(var(--white));
             }
             .title {
+                margin-top: -4em;
                 margin-bottom: 1em;
                 padding: 1em 0;
                 text-align: center;
@@ -59,16 +66,16 @@ const { title, description, logo } = Astro.props;
         <Header />
         <main>
             <article>
-                <div class="hero-image">
+                <div class="hero">
                     {
-                        logo && (
+                        <div class="hero-image">
                             <Image
                                 width={1020}
                                 height={510}
                                 src={logo}
                                 alt=""
                             />
-                        )
+                        </div>  
                     }
                 </div>
                 <div class="prose">
