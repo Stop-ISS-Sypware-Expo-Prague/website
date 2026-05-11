@@ -8,16 +8,50 @@ import {SITE_TITLE_CZ } from '../consts';
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={"Stránka nenalezena | " + SITE_TITLE_CZ} description={""} />
+		<BaseHead title={"Stránka nenalezena | Page not found | " + SITE_TITLE_CZ} description={""} />
+		<style>
+			main {
+				text-align: center;
+			}
+			.notfound {
+				padding: 0.5em;
+			}
+			.image-404 {
+				margin-top: 2em;
+			}
+			h1 {
+				font-size: 4em;
+			}
+			h3 {
+				padding: 0.1em;
+				margin: 0.1em;
+			}
+		</style>
 	</head>
 	<body>
-		<Header />
 		<main>
-			<h1>404</h1>
-            <h3>Page not found</h3>
-            <h3>Stránka nenalezena</h3>
+
+			<h1>404</h1>			
+
+			<div class="notfound">
+				<h3>Page not found</h3>	
+				<a href={"/en"}>
+					Go back to our home page!
+				</a>
+			</div>
+
+			<div class="notfound">
+            	<h3>Stránka nenalezena</h3>
+				<a href={"/"}>
+					Zpět na domovskou stránku!
+				</a>
+			</div>
+
+			<div class="image-404">
+				<img src={"/logo-small-transparent.png"} alt="logo image" style="max-width: 15em; height: auto;" />
+			</div>
+
 			
 		</main>
-		<Footer />
 	</body>
 </html>
