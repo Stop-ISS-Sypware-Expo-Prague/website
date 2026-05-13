@@ -1,0 +1,23 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import {SITE_TITLE_CZ } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={"Error | " + SITE_TITLE_CZ} description={""} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>500</h1>
+            <h3>Oops, something went wrong</h3>
+            <h3>Omlouváme se, ale něco se pokazilo</h3>
+			
+		</main>
+		<Footer />
+	</body>
+</html>

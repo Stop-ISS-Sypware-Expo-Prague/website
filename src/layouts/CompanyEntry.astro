@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { en_to_cs_path } from "../consts";
+
+interface Props {
+    id: string;
+    en: boolean;
+    data: CollectionEntry<"blog">["data"];
+}
+
+const { id, en, data } = Astro.props;
+---
+
+<div class="main-box">
+    <img class="logo" src={data.logo} alt={data.title + " Logo"} />
+    <div class="text-box">
+        <h4>
+            <a
+                href={`${en ? "/en" : ""}/${en ? "companies" : en_to_cs_path["companies"]}/${id}/`}
+                >{data.title}</a
+            >
+        </h4>
+        <p>{data.description}</p>
+    </div>
+</div>
+
+<style>
+    .main-box {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 1em;
+        color: black;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .logo {
+        width: 6em;
+        max-height: 6em;
+    }
+    .text-box {
+        max-width: 400px;
+    }
+    .text-box p {
+        margin: 0;
+        line-height: 1.3;
+    }
+</style>

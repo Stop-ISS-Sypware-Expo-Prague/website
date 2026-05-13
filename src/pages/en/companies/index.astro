@@ -1,0 +1,52 @@
+---
+import BaseHead from "../../../components/BaseHead.astro";
+import Footer from "../../../components/Footer.astro";
+import Header from "../../../components/Header.astro";
+import { SITE_TITLE_EN } from "../../../consts";
+import { getCollection } from "astro:content";
+import CompanyEntry from "../../../layouts/CompanyEntry.astro";
+
+const posts = (await getCollection("blog_en")).sort(function (a, b) {
+    if (a.data.order > b.data.order) return 1;
+    else {
+        if (a.data.order == b.data.order)
+            return a.data.title.localeCompare(b.data.title);
+        else return -1;
+    }
+});
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title={"Companies | " + SITE_TITLE_EN}
+            description={"Overview of companies participating in the spyware trade show ISS World Europe, which will be held in Prague!"}
+        />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <h1>Complicit companies</h1>
+            <ul>
+                {
+                    posts.map((post) => (
+                        <li>
+                            <CompanyEntry {...post} en />
+                        </li>
+                    ))
+                }
+            </ul>
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    ul {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        gap: 2em;
+    }
+</style>

@@ -1,0 +1,34 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import {SITE_TITLE_CZ } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={"Petice | " + SITE_TITLE_CZ} description={"Petice proti konání spyware veletrhu ISS World Europe!"} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Petice proti konání spyware veletrhu ISS World Europe</h1>
+			
+			lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent 
+
+			<br><br>
+
+			<h2>Signatáři</h2>
+
+			<div class="signatures">
+				<div class="signature">
+					<div class="name">John Doe</div>
+					<div class="organization">Strana Organizace</div>
+					<div class="location">Czech Republic</div>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
