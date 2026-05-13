@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE_EN, SITE_TITLE_CZ } from "../consts";
+import { SITE_TITLE_EN, SITE_TITLE_CZ, en_to_cs_path } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 import HeaderLanguageSwitch from "./HeaderLanguageSwitch.astro";
 import { Image } from "astro:assets";
@@ -23,13 +23,18 @@ const is_eng = en_slice === "/en/";
         </div>
         <div class="internal-links nav-div">
             <!-- <HeaderLink href={is_eng ? "/en" : "/"}>{is_eng ? "Home" : "Domů"}</HeaderLink> -->
-            <HeaderLink href={is_eng ? "/en/companies" : "/companies"}
+            <HeaderLink
+                href={is_eng
+                    ? "/en/companies"
+                    : "/" + en_to_cs_path["companies"]}
                 >{is_eng ? "Companies" : "Společnosti"}</HeaderLink
             >
-            <HeaderLink href={is_eng ? "/en/petition" : "/petition"}
+            <HeaderLink
+                href={is_eng ? "/en/petition" : "/" + en_to_cs_path["petition"]}
                 >{is_eng ? "Petition" : "Petice"}</HeaderLink
             >
-            <HeaderLink href={is_eng ? "/en/support" : "/support"}
+            <HeaderLink
+                href={is_eng ? "/en/support" : "/" + en_to_cs_path["support"]}
                 >{
                     is_eng ? "Support the Campaign" : "Podpořte kampaň"
                 }</HeaderLink
@@ -37,7 +42,6 @@ const is_eng = en_slice === "/en/";
         </div>
 
         <div class="nav-div">
-
             <div class="nav-div lang-switch-div">
                 <HeaderLanguageSwitch />
             </div>
@@ -96,11 +100,7 @@ const is_eng = en_slice === "/en/";
                     </svg>
                 </a>
             </div>
-
         </div>
-
-        
-        
     </nav>
 </header>
 <style>

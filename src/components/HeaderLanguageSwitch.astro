@@ -1,19 +1,29 @@
 ---
-const {class: className, ...props } = Astro.props;
+import type { StrToStr } from "../consts";
+import { cs_to_en_path, en_to_cs_path } from "../consts";
+const { class: className, ...props } = Astro.props;
+
+function get_with_fallback(mapping: StrToStr, key: string) {
+    return mapping[key] || key;
+}
 
 const path = Astro.url.pathname;
-const pathname = (path.at(-1) == "/") ? path : path + "/";
-const en_slice = pathname.slice(0, 4);
-const is_eng = en_slice === "/en/";
-const switched_path =  is_eng ? pathname.slice(3) : "/en" + pathname
+const pagename_match = path.match(/^\/(en)?\/?([^/]+)?(\/.*)?$/);
+const pagename = pagename_match && pagename_match[2] ? pagename_match[2] : "";
+const is_eng = pagename_match && pagename_match[1] === "en";
+const subpath = pagename_match && pagename_match[3] ? pagename_match[3] : "";
+const switched_path = is_eng
+    ? "/" + get_with_fallback(en_to_cs_path, pagename) + subpath
+    : "/en/" + get_with_fallback(cs_to_en_path, pagename) + subpath;
+console.log("Switched path: " + switched_path);
 ---
 
 <a href={switched_path} class:list={[className]} {...props}>
-	{is_eng ? "CZ" : "EN"}
+    {is_eng ? "CZ" : "EN"}
 </a>
 <style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
+    a {
+        display: inline-block;
+        text-decoration: none;
+    }
 </style>

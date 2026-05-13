@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { en_to_cs_path } from "../consts";
 
 interface Props {
     id: string;
@@ -14,7 +15,10 @@ const { id, en, data } = Astro.props;
     <img class="logo" src={data.logo} alt={data.title + " Logo"} />
     <div class="text-box">
         <h4>
-            <a href={`${en ? "/en" : ""}/companies/${id}/`}>{data.title}</a>
+            <a
+                href={`${en ? "/en" : ""}/${en ? "companies" : en_to_cs_path["companies"]}/${id}/`}
+                >{data.title}</a
+            >
         </h4>
         <p>{data.description}</p>
     </div>
